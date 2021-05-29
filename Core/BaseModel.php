@@ -61,28 +61,6 @@ abstract class BaseModel extends \CodeIgniter\Model
         return $this->validation;
     }
 
-    /**
-     * When I save the model without changes i get an error: "You must use the "set" method to update an entry."
-     * To fix this I change the $onlyChanged default value from "true" to "false".
-     *
-     * ToDo: Remove this later...  
-     */
-    public static function classToArray($data, $primaryKey = null, string $dateFormat = 'datetime', bool $onlyChanged = false) : array 
-    {
-        return parent::classToArray($data, $primaryKey, $dateFormat, $onlyChanged);
-    }
-
-    /**
-     * I do not know why the values ​​are not checked, if the user did not pass them to the server.
-     * Just turn it off here.
-     *
-     * ToDo: Remove this later...
-     */
-    protected function cleanValidationRules(array $rules, array $data = null): array
-    {
-        return $rules;
-    } 
-
     public function getPrimaryKey()
     {
         return $this->primaryKey;
