@@ -21,22 +21,8 @@ class Publisher extends BasePublisher
 
     public $curlOptions = [];
 
-    public $destinationExists;
-
     public function __construct(?string $source = null, ?string $destination = null)
-    {
-        if ($this->destination)
-        {
-            if (is_dir($this->destination))
-            {
-                $this->destinationExists = true;
-            }
-            else
-            {
-                $this->destinationExists = false;
-            }
-        }
-        
+    {        
         if ($this->createDestination)
         {
             $this->createDirectory($this->destination);
