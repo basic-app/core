@@ -13,35 +13,13 @@ use Exception;
 
 abstract class BaseAuthFilter implements \CodeIgniter\Filters\FilterInterface
 {
-
-    public $userService = 'user';
-
-    protected $_service;
-
     public function __construct()
     {
     }
 
-    public function getUserService()
-    {
-        if (!$this->_service)
-        {
-            $this->_service = service($this->userService);
-        }
-
-        return $this->_service;
-    }
-
     public function before(RequestInterface $request, $arguments = null)
     {
-        $userService = $this->getUserService();
-
-        if (!$userService)
-        {
-            throw new Exception('Service not defined.');
-        }
-
-        $loginUrl = $userService->getLoginUrl();
+        $loginUrl = site_url('user/login');
 
         $currentUrl = current_url();
 
@@ -50,9 +28,9 @@ abstract class BaseAuthFilter implements \CodeIgniter\Filters\FilterInterface
             return;
         }
 
-        $user = $userService->getUser();
-
-        if ($user)
+        helper(['auth']);
+        
+        if (user_id())
         {
             return;
         }
