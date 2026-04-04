@@ -20,7 +20,6 @@
         "codeigniter4/framework": "*",
         "denis303/codeigniter4-nested-views": "*",
         "denis303/codeigniter4-form": "*",
-        "denis303/codeigniter4-model-helper": "*",
         "denis303/codeigniter4-migration": "*",
         "denis303/php-file-helper": "*",
         "denis303/php-download-helper": "*",

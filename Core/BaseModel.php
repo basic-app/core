@@ -13,7 +13,7 @@ use denis303\traits\DefaultPropertyTrait;
 use BasicApp\Traits\BehaviorsTrait;
 use BasicApp\Traits\LanguageTrait;
 use BasicApp\Traits\FieldLabelsTrait;
-use denis303\codeigniter4\ModelHelperTrait;
+use BasicApp\Traits\ModelHelperTrait;
 
 abstract class BaseModel extends \CodeIgniter\Model
 {
