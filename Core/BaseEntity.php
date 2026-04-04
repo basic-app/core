@@ -7,13 +7,14 @@
 namespace BasicApp\Core;
 
 use Exception;
+use CodeIgniter\Entity\Entity;
 use BasicApp\Traits\EntityHasOneTrait;
 use BasicApp\Traits\EntityHasManyTrait;
 use BasicApp\Traits\BehaviorsTrait;
 use BasicApp\Events\EntityBeforeFillEvent;
 use BasicApp\Events\EntityAfterFillEvent;
 
-abstract class BaseEntity extends \CodeIgniter\Entity
+abstract class BaseEntity extends Entity
 {
 
     use BehaviorsTrait;
