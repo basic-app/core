@@ -17,7 +17,6 @@ use BasicApp\Traits\ModelHelperTrait;
 
 abstract class BaseModel extends \CodeIgniter\Model
 {
-
     use ModelHelperTrait;
 
     use FactoryTrait;
@@ -29,6 +28,10 @@ abstract class BaseModel extends \CodeIgniter\Model
     use LanguageTrait;
 
     use FieldLabelsTrait;
+
+    protected bool $allowEmptyInserts = true;
+    
+    protected bool $updateOnlyChanged = false;
 
     protected $afterFind = ['afterFind']; 
 
