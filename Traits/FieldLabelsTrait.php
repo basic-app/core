@@ -17,6 +17,11 @@ trait FieldLabelsTrait
         return ArrayHelper::getValue($this->getFieldLabels(), $field, $field);
     }
 
+    public function label(string $field) : string
+    {
+        return $this->getFieldLabel($field);
+    }
+
     public function getFieldLabels() : array
     {
         $return = [];
