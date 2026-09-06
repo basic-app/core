@@ -5,5 +5,8 @@
         "psr-4": {
             "BasicApp\\Core\\" : "src/"
         }
+    },
+    "require": {
+        "codeigniter4/settings": "*"
     }
 }
