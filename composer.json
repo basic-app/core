@@ -3,28 +3,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "BasicApp\\Core\\" : "Core/",
-            "BasicApp\\Interfaces\\" : "Interfaces/",
-            "BasicApp\\Behaviors\\" : "Behaviors/",
-            "BasicApp\\Traits\\" : "Traits/",
-            "BasicApp\\Helpers\\" : "Helpers/",
-            "BasicApp\\Exceptions\\" : "Exceptions/",
-            "BasicApp\\Filters\\" : "Filters/",
-            "BasicApp\\Validators\\" : "Validators/",
-            "BasicApp\\Events\\" : "Events/",
-            "BasicApp\\Views\\" : "Views/"
+            "BasicApp\\Core\\" : "src/"
         }
-    },
-    "require": {
-        "basic-app/crud": "*",
-        "codeigniter4/framework": "*",
-        "denis303/codeigniter4-nested-views": "*",
-        "denis303/codeigniter4-form": "*",
-        "denis303/codeigniter4-migration": "*",
-        "denis303/php-file-helper": "*",
-        "denis303/php-download-helper": "*",
-        "denis303/php-zip-helper": "*",
-        "denis303/php-traits": "*",
-        "phptheme/html-helper": "*"
     }
 }
