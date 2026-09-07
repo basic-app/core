@@ -43,7 +43,7 @@ class Composer extends \Composer\Installer\LibraryInstaller
         {
             copy($source, $target);
 
-            echo 'Copy: ' . $source . ' -> ' . $target . "\n";
+            echo 'Copy ' . $source . ' to ' . $target . "\n";
         }
     }
 
@@ -53,7 +53,7 @@ class Composer extends \Composer\Installer\LibraryInstaller
         {
             chmod($file, octdec($permission));  
             
-            echo 'Permissions: ' . $permission . ' ' . $file . "\n";
+            echo 'Set ' . $permission . ' permission to ' . $file . "\n";
         }
     }
 }
