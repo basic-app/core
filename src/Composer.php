@@ -42,6 +42,8 @@ class Composer extends \Composer\Installer\LibraryInstaller
         foreach($files as $source => $target)
         {
             copy($source, $target);
+
+            echo 'Copy: ' . $source . ' -> ' . $target . "\n";
         }
     }
 
@@ -50,6 +52,8 @@ class Composer extends \Composer\Installer\LibraryInstaller
         foreach($files as $file => $permission)
         {
             chmod($file, octdec($permission));  
+            
+            echo 'Permissions: ' . $permission . ' ' . $file . "\n";
         }
     }
 }
