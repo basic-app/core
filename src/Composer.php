@@ -6,6 +6,7 @@
 namespace BasicApp\Core;
 
 use Exception;
+use CodeIgniter\CLI\CLI;
 
 class Composer extends \Composer\Installer\LibraryInstaller
 {
@@ -43,7 +44,10 @@ class Composer extends \Composer\Installer\LibraryInstaller
         {
             copy($source, $target);
 
-            echo '  - Copying ' . $source . ' to ' . $target . "\n";
+            $source = CLI::color($source, 'green');
+            $target = CLI::color($target, 'green');
+
+            CLI::write('  - Copying ' . $source . ' to ' . $target);
         }
     }
 
@@ -51,9 +55,13 @@ class Composer extends \Composer\Installer\LibraryInstaller
     {
         foreach($files as $file => $permission)
         {
-            chmod($file, octdec($permission));  
+            chmod($file, octdec($permission));
+
+            $permission = CLI::color($permission, 'yellow');
+
+            $file = CLI::color($file, 'green');
             
-            echo '  - Setting ' . $permission . ' permissions to ' . $file . "\n";
+            CLI::write('  - Setting ' . $permission . ' permissions to ' . $file);
         }
     }
 }
