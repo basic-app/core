@@ -51,4 +51,16 @@ trait Resource
 
         return $return;
     }
+
+    public function setErrors(array $errors)
+    {
+        $validation = service('validation');
+
+        foreach($errors as $key => $error)
+        {
+            $validation->setError($key, $error);
+        }
+
+        return $this;
+    }
 }
