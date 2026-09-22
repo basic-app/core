@@ -5,49 +5,24 @@
  */
 namespace BasicApp\Core;
 
-use BasicApp\Core\Traits\Settings as SettingsTrait;
-use BasicApp\Core\Traits\Labels;
 use BasicApp\Core\Interfaces\SettingsInterface;
-use BasicApp\Core\Traits\Configurable;
+use BasicApp\Core\Interfaces\FormInterface;
+use BasicApp\Core\Traits\Settings as SettingsTrait;
+use BasicApp\Core\Traits\Form;
+use CodeIgniter\Traits\PropertiesTrait;
 
-abstract class Settings implements SettingsInterface
+abstract class Settings implements SettingsInterface, FormInterface
 {
-    use SettingsTrait, Labels, Configurable;
-
-    protected $configClass;
-
-    protected $settings;
+    use SettingsTrait, Form, PropertiesTrait;
 
     public function __construct()
     {
-        if ($this->configClass)
-        {
-            $this->loadConfig($this->configClass);
-        }
-
-        helper(['get_short_class']);
-
-        $this->settings ??= get_short_class($this);
-
-        $this->loadSettings($this->settings);
+        $this->fill($this->getSettings());
     }
 
-    public function rules() : array
+    public function save(&$errors = null) : bool
     {
-        return [];
-    }
-
-    public function fill(array $data = []) : void
-    {
-        foreach($data as $key => $value)
-        {
-            $this->$key = $value;
-        }
-    }
-
-    public function save() : bool
-    {
-        $this->saveSettings($this->settings);
+        $this->setSettings();
 
         return true;
     }

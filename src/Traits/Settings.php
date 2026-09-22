@@ -7,38 +7,68 @@ namespace BasicApp\Core\Traits;
 
 trait Settings
 {
-    public function loadSettings()
+    public function getSettingsClass() : string
     {
-        $class = $this->settings;
+        helper(['get_short_class']);
 
-        helper('get_public_vars');
+        return get_short_class($this);
+    }
+
+    public function getSettings(?string $settingsClass = null, ?array $attributeNames = null) : array
+    {
+        if (!$settingsClass)
+        {
+            $settingsClass = $this->getSettingsClass();
+        }
+
+        if ($attributeNames === null)
+        {
+            helper('get_public_vars');
+
+            $attributeNames = array_keys(get_public_vars($this));
+        }
 
         $settingNames = [];
 
-        foreach(get_public_vars($this) as $key => $value) 
+        foreach($attributeNames as $attribute) 
         {
-            $settingNames[] = $class . '.' . $key;
+            $settingNames[] = $settingsClass . '.' . $attribute;
         }
+
+        $return = [];
 
         foreach(service('settings')->getMany($settingNames) as $key => $value) 
         {
             list($class, $var) = explode('.', $key);
 
-            $this->$var = $value ?? $this->$var;
+            if ($value !== null)
+            {
+                $return[$var] = $value;
+            }
         }
+
+        return $return;
     }
 
-    public function saveSettings()
+    public function setSettings(?string $settingsClass = null, ?array $values = null)
     {
-        $class = $this->settings;
-        
-        helper('get_public_vars');
+        if (!$settingsClass)
+        {
+            $settingsClass = $this->getSettingsClass();
+        }
+
+        if ($values === null)
+        {
+            helper('get_public_vars');
+
+            $values = get_public_vars($this);
+        }
 
         $settings = [];
 
-        foreach(get_public_vars($this) as $key => $value)
+        foreach($values as $key => $value)
         {
-            $settings[$class . '.' . $key] = $value;
+            $settings[$settingsClass . '.' . $key] = $value;
         }
 
         service('settings')->setMany($settings);

@@ -5,45 +5,26 @@
  */
 namespace BasicApp\Core;
 
-use CodeIgniter\View\Cells\Cell as BaseCell;
+use CodeIgniter\View\Cells\Cell;
 use BasicApp\Core\Traits\Settings;
-use BasicApp\Core\Traits\Labels;
-use BasicApp\Core\Traits\Configurable;
+use BasicApp\Core\Traits\Form;
 use BasicApp\Core\Interfaces\SettingsInterface;
-use BasicApp\Core\Interfaces\ConfigurableInterface;
+use BasicApp\Core\Interfaces\FormInterface;
 
-abstract class SettingsCell extends BaseCell 
-    implements SettingsInterface,
-        ConfigurableInterface
+abstract class SettingsCell extends Cell implements SettingsInterface, FormInterface
 {
-    use Settings, Labels, Configurable;
-
-    protected $settings;
-
-    protected $configClass;
+    use Settings, Form;
 
     public function __construct()
     {
-        if ($this->configClass)
-        {
-            $this->loadConfig();
-        }
+        $values = $this->getSettings();
 
-        helper(['get_short_class']);
-
-        $this->settings ??= get_short_class($this);
-
-        $this->loadSettings();
+        $this->fill($values);
     }
 
-    public function rules() : array
+    public function save(&$errors = null) : bool
     {
-        return [];
-    }
-
-    public function save() : bool
-    {
-        $this->saveSettings();
+        $this->setSettings();
 
         return true;
     }

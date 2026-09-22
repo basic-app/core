@@ -7,11 +7,10 @@ namespace BasicApp\Core;
 
 use CodeIgniter\RESTful\ResourceController as BaseResourceController;
 use BasicApp\Core\Traits\Resource;
-use BasicApp\Core\Traits\Messages;
 
 abstract class ResourceController extends BaseResourceController
 {
-    use Resource, Messages;
+    use Resource;
     /**
      * Constructor.
      *

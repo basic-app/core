@@ -9,6 +9,8 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 trait Resource
 {
+    protected $messageSaved = 'Admin.Data saved successfully.';
+    
     protected function findOrFail(int $id, string $message = null)
     {
         $return = $this->model->find($id);

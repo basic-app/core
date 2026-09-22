@@ -7,7 +7,7 @@ namespace BasicApp\Core\Interfaces;
 
 interface SettingsInterface
 {
-    public function loadSettings();
+    public function getSettings(?string $settingsClass = null, ?array $attributeNames = null) : array;
 
-    public function saveSettings();
+    public function setSettings(?string $settingsClass = null, ?array $values = null);
 }

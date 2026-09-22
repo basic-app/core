@@ -9,7 +9,7 @@ use CodeIgniter\Controller as BaseController;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use BasicApp\Core\Traits\Messages;
+use BasicApp\Core\Traits\Resource;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -24,7 +24,7 @@ use BasicApp\Core\Traits\Messages;
  */
 abstract class Controller extends BaseController
 {
-    use Messages;
+    use Resource;
     /**
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.

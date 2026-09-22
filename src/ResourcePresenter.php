@@ -10,11 +10,10 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use BasicApp\Core\Traits\Resource;
-use BasicApp\Core\Traits\Messages;
 
 abstract class ResourcePresenter extends BaseResourcePresenter
 {
-    use Resource, Messages;
+    use Resource;
 
     protected $perPage = 10;
 

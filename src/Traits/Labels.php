@@ -11,7 +11,8 @@ trait Labels
     {
         return array_combine(
             $keys = array_keys($rules = $this->rules()), 
-            array_map(function($key, $value) {
+            array_map(
+                function($key, $value) {
                     return lang($value['label'] ?? $key);
                 }, 
                 $keys, 
