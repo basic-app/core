@@ -7,25 +7,29 @@ namespace BasicApp\Core\Traits;
 
 trait Settings
 {
-    public function getSettingsClass() : string
-    {
-        helper(['get_short_class']);
-
-        return get_short_class($this);
-    }
-
     public function getSettings(?string $settingsClass = null, ?array $attributeNames = null) : array
     {
         if (!$settingsClass)
         {
-            $settingsClass = $this->getSettingsClass();
+            helper(['get_short_class']);
+
+            $settingsClass = get_short_class($this);
         }
 
         if ($attributeNames === null)
         {
-            helper('get_public_vars');
+            if (method_exists($this, 'getPublicProperties'))
+            {
+                $values = $this->getPublicProperties();
+            }
+            else
+            {
+                helper('get_public_vars');
 
-            $attributeNames = array_keys(get_public_vars($this));
+                $values = get_public_vars($this);
+            }
+
+            $attributeNames = array_keys($values);
         }
 
         $settingNames = [];
@@ -54,14 +58,23 @@ trait Settings
     {
         if (!$settingsClass)
         {
-            $settingsClass = $this->getSettingsClass();
+            helper(['get_short_class']);
+
+            $settingsClass = get_short_class($this);
         }
 
         if ($values === null)
         {
-            helper('get_public_vars');
+            if (method_exists($this, 'getPublicProperties'))
+            {
+                $values = $this->getPublicProperties();
+            }
+            else
+            {
+                helper('get_public_vars');
 
-            $values = get_public_vars($this);
+                $values = get_public_vars($this);
+            }
         }
 
         $settings = [];
