@@ -3,10 +3,11 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "BasicApp\\Core\\" : "src/"
+            "BasicApp\\Core\\" : "src"
         }
     },
     "require": {
-        "codeigniter4/settings": "*"
+        "codeigniter4/settings": "*",
+        "basic-app/publisher": "*"
     }
 }
