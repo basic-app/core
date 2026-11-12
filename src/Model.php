@@ -6,7 +6,7 @@
 namespace BasicApp\Core;
 
 use CodeIgniter\Model as BaseModel;
-use BasicApp\Core\Traits\Labels;
+use BasicApp\Form\Traits\Labels;
 
 abstract class Model extends BaseModel
 {
