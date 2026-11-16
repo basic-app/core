@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\Core\Traits;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -11,13 +13,12 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 trait Resource
 {
     protected $messageSaved = 'Admin.Data saved successfully.';
-    
+
     protected function findOrFail($id, string $message = null)
     {
         $return = $this->model->find($id);
 
-        if (!$return)
-        {
+        if (!$return) {
             throw PageNotFoundException::forPageNotFound($message);
         }
 
@@ -28,8 +29,7 @@ trait Resource
     {
         $className = $this->model->returnType;
 
-        if ($className == 'array')
-        {
+        if ($className == 'array') {
             return $defaults;
         }
 
@@ -40,15 +40,11 @@ trait Resource
     {
         $return = $this->model->save($data);
 
-        if ($return)
-        {
-            if (!$this->model->getIdValue($data))
-            {
+        if ($return) {
+            if (!$this->model->getIdValue($data)) {
                 $data->{$this->model->id} = $this->model->getInsertID();
             }
-        }
-        else
-        {
+        } else {
             $errors = $this->model->errors();
         }
 
@@ -59,8 +55,7 @@ trait Resource
     {
         $validation = service('validation');
 
-        foreach($errors as $key => $error)
-        {
+        foreach ($errors as $key => $error) {
             $validation->setError($key, $error);
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
@@ -6,9 +7,8 @@ declare(strict_types=1);
  */
 use CodeIgniter\View\View;
 
-if (!function_exists('render_scripts'))
-{
-    function render_scripts(?View $renderer = null) : string
+if (!function_exists('render_scripts')) {
+    function render_scripts(?View $renderer = null): string
     {
         $renderer = $renderer ?? service('renderer');
 
@@ -18,12 +18,10 @@ if (!function_exists('render_scripts'))
     }
 }
 
-if (!function_exists('add_script'))
-{
-    function add_script(?string $script, bool $unique = false, ?View $renderer = null) : void
+if (!function_exists('add_script')) {
+    function add_script(?string $script, bool $unique = false, ?View $renderer = null): void
     {
-        if (!$script)
-        {
+        if (!$script) {
             return;
         }
 
@@ -31,14 +29,12 @@ if (!function_exists('add_script'))
 
         $scripts = $renderer->getData()['scripts'] ?? [];
 
-        if ($unique)
-        {
-            if (array_search($script, $scripts) !== false)
-            {
+        if ($unique) {
+            if (array_search($script, $scripts) !== false) {
                 return;
             }
         }
-        
+
         $scripts[] = $script;
 
         $renderer->setVar('scripts', $scripts);

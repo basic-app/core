@@ -1,17 +1,17 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
-if (!function_exists('render_view'))
-{
+if (!function_exists('render_view')) {
     function render_view(
-        string $view, 
-        array $data = [], 
-        ?array $options = null, 
-        bool $saveData = false) : string
-    {
+        string $view,
+        array $data = [],
+        ?array $options = null,
+        bool $saveData = false
+    ): string {
         $newRenderer = service('renderer', null, null, false);
 
         $newRenderer->setData($data);

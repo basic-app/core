@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\Core;
 
 use CodeIgniter\Model as BaseModel;
@@ -12,7 +14,7 @@ use BasicApp\Form\Traits\Labels;
 abstract class Model extends BaseModel
 {
     use Labels;
-    
+
     protected $table            = null;
     protected $primaryKey       = null;
     protected $useAutoIncrement = true;
@@ -51,7 +53,7 @@ abstract class Model extends BaseModel
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function rules() : array
+    public function rules(): array
     {
         return $this->validationRules; // need for labels trait
     }
@@ -69,7 +71,7 @@ abstract class Model extends BaseModel
         return $return;
     }
 
-    public function rowValidationRules($row) : array
+    public function rowValidationRules($row): array
     {
         return $this->validationRules;
     }

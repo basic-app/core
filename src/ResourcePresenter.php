@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\Core;
 
 use CodeIgniter\RESTful\ResourcePresenter as BaseResourcePresenter;
@@ -24,10 +26,10 @@ abstract class ResourcePresenter extends BaseResourcePresenter
      * @return void
      */
     public function initController(
-        RequestInterface $request, 
-        ResponseInterface $response, 
-        LoggerInterface $logger)
-    {
+        RequestInterface $request,
+        ResponseInterface $response,
+        LoggerInterface $logger
+    ) {
         // Load here all helpers you want to be available in your controllers that extend BaseController.
         // Caution: Do not put the this below the parent::initController() call below.
         // $this->helpers = ['form', 'url'];
@@ -37,7 +39,7 @@ abstract class ResourcePresenter extends BaseResourcePresenter
 
         // Preload any models, libraries, etc, here.
         $this->session = service('session');
-    
+
         $this->initialize();
     }
 
