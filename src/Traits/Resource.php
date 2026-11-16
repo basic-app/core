@@ -12,7 +12,7 @@ trait Resource
 {
     protected $messageSaved = 'Admin.Data saved successfully.';
     
-    protected function findOrFail(int $id, string $message = null)
+    protected function findOrFail($id, string $message = null)
     {
         $return = $this->model->find($id);
 
