@@ -10,6 +10,9 @@ namespace BasicApp\Core;
 
 use CodeIgniter\RESTful\ResourceController as BaseResourceController;
 use BasicApp\Core\Traits\Resource;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 abstract class ResourceController extends BaseResourceController
 {
