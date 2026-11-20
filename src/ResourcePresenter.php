@@ -20,6 +20,8 @@ abstract class ResourcePresenter extends BaseResourcePresenter
 
     protected $perPage = 10;
 
+    protected $session;
+
     /**
      * Constructor.
      *

@@ -17,6 +17,7 @@ use Psr\Log\LoggerInterface;
 abstract class ResourceController extends BaseResourceController
 {
     use Resource;
+    protected $session;
     /**
      * Constructor.
      *

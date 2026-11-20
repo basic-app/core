@@ -35,6 +35,8 @@ abstract class Controller extends BaseController
 
     protected $session;
 
+    protected $model;
+
     /**
      * @return void
      */
